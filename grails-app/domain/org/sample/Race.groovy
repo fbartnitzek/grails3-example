@@ -33,4 +33,13 @@ class Race {
 		return "${name}, ${startDate == null ? '' : startDate.format('dd.MM.yyyy')}"
 	}
 
+    /*def beforeDelete(){
+        withNewSession { session ->
+            def registrations = Registration.findAllByRace(this)
+            registrations.each {
+                it.delete()
+            }
+        }
+    }*/
+
 }
