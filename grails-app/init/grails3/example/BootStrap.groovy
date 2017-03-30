@@ -7,6 +7,28 @@ class BootStrap {
     def grailsApplication
 
     def init = { servletContext ->
+
+        // spring security
+        def adminRole = new Role(authority: 'ROLE_ADMIN').save()
+        def userRole = new Role(authority: 'ROLE_USER').save()
+
+        def testUser = new User(username: 'me', password: 'password').save()
+
+        UserRole.create testUser, adminRole
+
+        UserRole.withSession {
+            it.flush()
+            it.clear()
+        }
+
+        assert User.count() == 1
+        assert Role.count() == 2
+        assert UserRole.count() == 1
+
+
+
+        // data
+
         def jane = new Runner(firstName: "Jane", lastName: "Doe", gender: 'F', address: "SomeWay 1", city: "SomeTown",
                 state: "SomeState", zipCode: "123", email: "jane.doe@some.com").save(flush: true, failOnError: true)
 
