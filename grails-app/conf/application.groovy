@@ -4,6 +4,9 @@
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'org.sample.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'org.sample.UserRole'
 grails.plugin.springsecurity.authority.className = 'org.sample.Role'
+grails.plugin.springsecurity.requestMap.className = 'org.sample.Permission'
+grails.plugin.springsecurity.securityConfigType = 'Requestmap'
+// seem to be ignored with permissions by: http://stackoverflow.com/questions/20668999/grails-spring-security-fails-to-present-the-login-page-due-to-a-redirect-loop
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
