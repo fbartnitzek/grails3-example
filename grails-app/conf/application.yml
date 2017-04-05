@@ -88,6 +88,9 @@ endpoints:
     jmx:
         unique-names: true
 
+server:
+  contextPath: /example
+
 ---
 hibernate:
     cache:
