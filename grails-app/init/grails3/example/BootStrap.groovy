@@ -34,7 +34,7 @@ class BootStrap {
                 '/login/**', '/logout/**',
                 '/home/**'
         ]) {
-            Permission.findByUrl(url) ?: new Permission(url: url, configAttribute: 'permitAll').save(failOnError: true)
+            Permission.findByUrl(url) ?: new Permission(url: url, configAttribute: 'permitAll').save(failOnError: true, flush: true)
         }
 
         for (String url in [
@@ -43,7 +43,7 @@ class BootStrap {
                 '/race/**', '/runner/**', '/registration/**',               // data domains
                 '/user/**', '/role/**', '/userRole/**', '/permission/**'    // spring security domains
         ]) {
-            Permission.findByUrl(url) ?: new Permission(url: url, configAttribute: 'ROLE_ADMIN').save(failOnError: true)
+            Permission.findByUrl(url) ?: new Permission(url: url, configAttribute: 'ROLE_ADMIN').save(failOnError: true, flush: true)
         }
 
         println("... spring bootstrapped")
