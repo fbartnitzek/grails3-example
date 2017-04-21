@@ -1,11 +1,9 @@
 package org.sample
 
-import grails.plugin.springsecurity.annotation.Secured
-
 class HomeSecController {
 
     transient springSecurityService
-    @Secured('ROLE_ADMIN')
+
     def index() {
         println ("HomeSecController index User:"+ springSecurityService.getPrincipal()?.getUsername()+" "
                 +(springSecurityService.isLoggedIn()? " accessing /home is logged in!":" accessing /home is not logged in!"))

@@ -9,12 +9,8 @@ class UrlMappings {
             }
         }
 
-//        "/"(view:"/index")\
+//        "/"(view:"/index")
         "/" (controller: 'home', action: 'index', view:"/index_login")
-
-        // login-mapping for spring-security with permissions explicitly?
-        "/login/$action?"(controller: "login")
-        "/logout/$action?"(controller: "logout")
 
         "500"(view:'/error')
         "404"(view:'/notFound')
