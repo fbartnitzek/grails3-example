@@ -2,11 +2,12 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Welcome to Grails</title>
+    <title><sec:ifLoggedIn>Home</sec:ifLoggedIn><sec:ifNotLoggedIn>Welcome to Sample</sec:ifNotLoggedIn></title>
 
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 </head>
 <body>
+<sec:ifLoggedIn>
     <content tag="nav">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Application Status <span class="caret"></span></a>
@@ -53,7 +54,7 @@
 
     <div id="content" role="main">
         <section class="row colset-2-its">
-            <h1>Welcome to Grails</h1>
+            <h1>Welcome to Sample (logged in)</h1>
 
             <p>
                 Congratulations, you have successfully started your first Grails application! At the moment
@@ -74,6 +75,12 @@
             </div>
         </section>
     </div>
+</sec:ifLoggedIn>
+<sec:ifNotLoggedIn>
+    <h1>Welcome to Sample (not logged in)</h1>
+    <p>To further proceed please Login:
+        <a href="${createLink(controller: 'login', action: 'auth')}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-user"></span> Login</a></p>
+</sec:ifNotLoggedIn>
 
 </body>
 </html>

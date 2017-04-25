@@ -31,8 +31,8 @@ class BootStrap {
         // Request Maps:
         for (String url in [
                 '/', '/error',
-                '/index', '/index.gsp', 'index_login.gsp', '/shutdown',
-                '/assets/**', '/**/js/**', '/**/css/**', '/**/images/**', '/**/favicon.ico',
+                '/index', 'index.gsp', '/shutdown',
+                '/assets/**', '/**/js/**', '/**/css/**', '/**/images/**', '/**/favicon.ico', '/fonts/**',
                 '/login/**', '/logout/**',
                 '/home/**'
         ]) {
@@ -41,7 +41,6 @@ class BootStrap {
 
         for (String url in [
                 '/dbconsole/**',                                            // web DB Console for h2
-                '/homeSec/**',                                              // sec home page
                 '/race/**', '/runner/**', '/registration/**',               // data domains
                 '/user/**', '/role/**', '/userRole/**', '/permission/**'    // spring security domains
         ]) {

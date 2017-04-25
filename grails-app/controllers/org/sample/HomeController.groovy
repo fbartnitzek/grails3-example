@@ -16,10 +16,10 @@ class HomeController {
 //            def current_text = "current text!"
 //            session["current_text"] = current_text // session parameter, not needed for now...
 //            render view: '/index_login', model:[current_text:current_text]
-            render view: '/index_login'
+            render view: '/index'
             return
         }
 
-        render view: '/index_login'
+        render view: '/index'
     }
 }
