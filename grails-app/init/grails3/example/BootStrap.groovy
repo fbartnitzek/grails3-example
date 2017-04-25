@@ -6,6 +6,8 @@ class BootStrap {
 
     def grailsApplication
 
+    def springSecurityService
+
     def init = { servletContext ->
 
         // spring security
@@ -45,6 +47,7 @@ class BootStrap {
         ]) {
             Permission.findByUrl(url) ?: new Permission(url: url, configAttribute: 'ROLE_ADMIN').save(failOnError: true, flush: true)
         }
+        springSecurityService.clearCachedRequestmaps()
 
         println("... spring bootstrapped")
 
