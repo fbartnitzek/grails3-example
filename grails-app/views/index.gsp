@@ -5,6 +5,8 @@
     <title><sec:ifLoggedIn>Home</sec:ifLoggedIn><sec:ifNotLoggedIn>Welcome to Sample</sec:ifNotLoggedIn></title>
 
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+    <style type="text/css" media="screen">
+    </style>
 </head>
 <body>
 <sec:ifLoggedIn>

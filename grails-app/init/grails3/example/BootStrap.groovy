@@ -17,6 +17,7 @@ class BootStrap {
         def testUser = new User(username: 'me', password: 'password').save()
 
         UserRole.create testUser, adminRole
+        UserRole.create testUser, userRole
 
         UserRole.withSession {
             it.flush()
@@ -25,7 +26,7 @@ class BootStrap {
 
         assert User.count() == 1
         assert Role.count() == 2
-        assert UserRole.count() == 1
+        assert UserRole.count() == 2
 
 
         // Request Maps:

@@ -7,35 +7,47 @@
         <g:layoutTitle default="Grails"/>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
     <asset:stylesheet src="application.css"/>
-
     <g:layoutHead/>
 </head>
 <body>
 
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/#">
-                    <i class="fa grails-icon">
-                        <asset:image src="grails-cupsonly-logo-white.svg"/>
-                    </i> Grails
-                </a>
-            </div>
-            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <g:pageProperty name="page.nav" />
+                    <sec:ifLoggedIn>
+                        <li><a href="${createLink(uri: '/')}">home</a></li>
+                        <sec:ifAnyGranted roles="ROLE_USER">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Runner Setup<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="${createLink(controller: 'runner')}" title="Runner List"><span class="glyphicon glyphicon-check"></span> Runner List</a></li>
+                                    <li><a href="${createLink(controller: 'registration')}" title="Registrations"><span class="glyphicon glyphicon-share"></span> Registrations</a></li>
+                                </ul>
+                            </li>
+                        </sec:ifAnyGranted>
+                        <sec:ifAnyGranted roles="ROLE_ADMIN">
+                            <li class="dropdown">
+                                <a href="#" title="Master Dropdown" class="dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="${createLink(controller: 'race')}"         title="Race List"><span class="glyphicon glyphicon-eye-open"></span> Race List</a></li>
+                                    <li><a href="${createLink(controller: 'user')}"         title="User List"><span class="glyphicon glyphicon-eye-open"></span> User List</a></li>
+                                    <li><a href="${createLink(controller: 'role')}"         title="Role List"><span class="glyphicon glyphicon-eye-open"></span> Role List</a></li>
+                                    <li><a href="${createLink(controller: 'userRole')}"     title="UserRole List"><span class="glyphicon glyphicon-eye-open"></span> UserRole List</a></li>
+                                    <li><a href="${createLink(controller: 'permission')}"   title="Permission List"><span class="glyphicon glyphicon-eye-open"></span> Permission List</a></li>
+                                </ul>
+                            </li>
+                        </sec:ifAnyGranted>
+                    </sec:ifLoggedIn>
+                    <sec:ifNotLoggedIn>
+                        <li><a href="${createLink(controller: 'login', action: 'auth')}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                    </sec:ifNotLoggedIn>
+                    <li><a href="${createLink(uri:'/help/index.html')}" title="Help"><span class="glyphicon glyphicon-question-sign"></span></a></li>
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
 
     <g:layoutBody/>
 
