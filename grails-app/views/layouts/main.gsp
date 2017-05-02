@@ -13,13 +13,13 @@
 <body>
 
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
+        <div class="container-fluid">   <!-- bootstrap container class with full width (just container for fixed width) -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <sec:ifLoggedIn>
                         <li><a href="${createLink(uri: '/')}">home</a></li>
                         <sec:ifAnyGranted roles="ROLE_USER">
-                            <li class="dropdown">
+                            <li class="dropdown">   <!-- bootstrap dropdown -->
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Runner Setup<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="${createLink(controller: 'runner')}" title="Runner List"><span class="glyphicon glyphicon-check"></span> Runner List</a></li>
