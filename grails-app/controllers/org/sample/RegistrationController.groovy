@@ -1,7 +1,5 @@
 package org.sample
 
-import static org.sample.Registration.createCriteria
-
 class RegistrationController {
 
     static scaffold = Registration
@@ -22,13 +20,13 @@ class RegistrationController {
 
         def raceP = params.race
         def runnerP = params.runner
-        def paid = params.paid
+        String paidP = params.paid
         def dateCreated = params.dateCreated
         println("filtering: params=" + params)
 
         // we save the original values to be displayed again at UI re-rendering
         // (since we are not doing AJAX but a classic HTTP request)
-        def filter = ['race':raceP,'runner':runnerP,'paid':paid, 'dateCreated':dateCreated]
+        def filter = ['race':raceP,'runner':runnerP,'paid':paidP, 'dateCreated':dateCreated]
 
         // params preparation
         def paramsWithoutPosition = [:]
@@ -46,9 +44,15 @@ class RegistrationController {
 
         def sortColumn = paramsWithoutPosition.sort
         println("filtering: sort=" + sortColumn)
+        println("filtering: race=" + raceP)
+        println("filtering: runner=" + runnerP)
+        println("filtering: paid=" + paidP)
+        println("filtering: dateCreated=" + dateCreated)
 
         // basic query
-        def lst = createCriteria().list(paramsWithoutPosition) {
+//        def lst = createCriteria().list(paramsWithoutPosition) {  //ignore for now
+        def c = Registration.createCriteria()
+        def lst = c.list {
             if(raceP?.trim()) {
                 race {
                     ilike("name",     '%'+raceP+'%')
@@ -62,7 +66,13 @@ class RegistrationController {
                     }
                 }
             }
-            if(paid?.trim())          { ilike("paid",          '%'+paid+'%')}
+            if(paidP?.trim()) {
+                if ('true'.contains(paidP.toLowerCase())) {
+                    eq('paid', true)
+                } else if ('false'.contains(paidP.toLowerCase())) {
+                    eq('paid', false)
+                }
+            }
             if(dateCreated?.trim())   { ilike("dateCreated",        '%'+dateCreated+'%')}
         }
 
