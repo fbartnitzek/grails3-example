@@ -1,0 +1,21 @@
+{
+  "name": "grails3-example",
+  "homepage": "https://github.com/fbartnitzek/grails3-example",
+  "description": "",
+  "main": "application.js",
+  "authors": [
+    "frank_bartnitzek@web.de"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies":{
+    "bootstrap": "~3.3.7"
+  }
+}

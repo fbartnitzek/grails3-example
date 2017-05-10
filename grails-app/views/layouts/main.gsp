@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <sec:ifLoggedIn>
-                        <li><a href="${createLink(uri: '/')}">home</a></li>
+                        <li><a href="${createLink(uri: '/')}"><span class="glyphicon glyphicon-home"></span> home</a></li>
                         <sec:ifAnyGranted roles="ROLE_USER">
                             <li class="dropdown">   <!-- bootstrap dropdown -->
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Runner Setup<span class="caret"></span></a>

@@ -58,6 +58,25 @@ bootRun {
 
 
 assets {
-    minifyJs = true
-    minifyCss = true
+    minifyJs = false
+    minifyCss = false
+
+    excludes = [
+        "**/*.txt",
+        "**/*.map",
+        "**/*.properties",
+        "**/*.md",
+        "**/*.json",
+
+        // just bootstrap/dist/* ...
+        "bootstrap/fonts/**", "bootstrap/grunt/**", "bootstrap/js/**", "bootstrap/less/**", "bootstrap/nuget/**",
+        "bootstrap/Gemfile*", "bootstrap/Gruntfile*", "bootstrap/LICENSE*", "bootstrap/package*",
+
+        // just jquery/dist/*
+        "jquery/external/**", "jquery/src/**"
+    ]
+
+//    includes = [
+//        "bootstrap/dist/**"
+//    ]
 }
