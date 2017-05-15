@@ -6,7 +6,7 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery-2.2.0.min
-//= require ../bootstrap/js/bootstrap
+//= require ../bower_components/bootstrap/dist/js/bootstrap.js
 //= require_self
 
 if (typeof jQuery !== 'undefined') {

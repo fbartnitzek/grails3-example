@@ -7,7 +7,6 @@ buildscript {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.14.1"
         classpath "org.grails.plugins:hibernate5:${gormVersion-".RELEASE"}"
-        classpath 'com.craigburke.gradle:client-dependencies:1.4.0'
     }
 }
 
@@ -20,7 +19,6 @@ apply plugin:"war"
 apply plugin:"org.grails.grails-web"
 apply plugin:"org.grails.grails-gsp"
 apply plugin:"asset-pipeline"
-apply plugin: 'com.craigburke.client-dependencies'
 
 repositories {
     mavenLocal()
@@ -58,19 +56,6 @@ bootRun {
     addResources = true
 }
 
-clientDependencies {
-    bower {
-        'bootstrap'('3.3.7')
-    }
-
-    // defaults
-    installDir = 'src/assets/vendor'
-    fileExtensions = ['css', 'js', 'eot', 'svg', 'ttf', 'woff', 'woff2', 'ts', 'jpg', 'jpeg', 'png', 'gif']
-    releaseFolders = ['dist', 'release']
-    copyIncludes = []
-    copyExcludes = ['**/*.min.js', '**/*.min.css', '**/*.map', '**/Gruntfile.js', 'gulpfile.js', 'source/**']
-}
-
 
 assets {
     minifyJs = false
@@ -81,6 +66,17 @@ assets {
         "**/*.map",
         "**/*.properties",
         "**/*.md",
-        "**/*.json"
+        "**/*.json",
+
+        // just bootstrap/dist/* ...
+        "bootstrap/fonts/**", "bootstrap/grunt/**", "bootstrap/js/**", "bootstrap/less/**", "bootstrap/nuget/**",
+        "bootstrap/Gemfile*", "bootstrap/Gruntfile*", "bootstrap/LICENSE*", "bootstrap/package*",
+
+        // just jquery/dist/*
+        "jquery/external/**", "jquery/src/**"
     ]
+
+//    includes = [
+//        "bootstrap/dist/**"
+//    ]
 }
