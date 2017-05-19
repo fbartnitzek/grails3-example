@@ -68,15 +68,18 @@ assets {
         "**/*.md",
         "**/*.json",
 
-        // just bootstrap/dist/* ...
+        // include only bootstrap/dist/* via excluding all other - GLOB - works
         "bootstrap/fonts/**", "bootstrap/grunt/**", "bootstrap/js/**", "bootstrap/less/**", "bootstrap/nuget/**",
         "bootstrap/Gemfile*", "bootstrap/Gruntfile*", "bootstrap/LICENSE*", "bootstrap/package*",
+
+        // exclude via regex - none working
+//        "regex:bootstrap/fonts/.*",
+//        "regex:bootstrap\\/fonts\\/.*",
+//        "regex:/bootstrap\\/fonts\\/.*/",
+//        "regex:/.*bootstrap\\/fonts\\/.*/",
+//        "regex:.*bootstrap\\/.*",
 
         // just jquery/dist/*
         "jquery/external/**", "jquery/src/**"
     ]
-
-//    includes = [
-//        "bootstrap/dist/**"
-//    ]
 }
