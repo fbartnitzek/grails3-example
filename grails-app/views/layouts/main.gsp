@@ -8,6 +8,11 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <asset:stylesheet src="application.css"/>
+    <asset:javascript src="application.js"/>
+    <script>
+    var ctx = '${application.getContextPath()}';
+    var grailsExample = grailsExample || {};
+    </script>
     <g:layoutHead/>
 </head>
 <body>
@@ -39,6 +44,14 @@
                                 </ul>
                             </li>
                         </sec:ifAnyGranted>
+                        <sec:ifAnyGranted roles="ROLE_ADMIN">
+                            <li class="dropdown">
+                                <a href="#" title="Import Master Data" class="dropdown-toggle" data-toggle="dropdown">Import<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="${createLink(controller: 'race', action: 'csv')}"  title="Race CSV Import">${message(code: 'race.label', default:'Race')}</a></li>
+                                </ul>
+                            </li>
+                        </sec:ifAnyGranted>
                     </sec:ifLoggedIn>
                     <sec:ifNotLoggedIn>
                         <li><a href="${createLink(controller: 'login', action: 'auth')}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
@@ -57,7 +70,6 @@
         <g:message code="spinner.alt" default="Loading&hellip;"/>
     </div>
 
-    <asset:javascript src="application.js"/>
 
 </body>
 </html>
