@@ -8,7 +8,7 @@ class ${className}Controller {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 15, 100)
         ${className}.async.task {
             [${propertyName}List: list(params), count: count() ]
         }.then { result ->

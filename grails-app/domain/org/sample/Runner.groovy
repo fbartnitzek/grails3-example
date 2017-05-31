@@ -7,6 +7,11 @@ class Runner {
 	String city
 	String state
 	String zipCode
+	String attr1
+	String attr2
+	String attr3
+	String attr4
+	String attr5
 	
 	static hasMany = [registrations:Registration]
 
@@ -16,8 +21,12 @@ class Runner {
 		address[:]
 		city[:]
 		state[:]
-
 		zipCode[:]
+		attr1[:]
+		attr2[:]
+		attr3[:]
+		attr4[:]
+		attr5[:]
     }
 	
 	String toString(){

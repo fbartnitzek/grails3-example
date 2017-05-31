@@ -48,6 +48,11 @@
             { data: "distance",     title: "Distance" },
             { data: "cost",         title: "Cost" },
             { data: "maxRunners",   title: "MaxRunners" },
+            { data: "attr1",        title: "attr1" },
+            { data: "attr2",        title: "attr2" },
+            { data: "attr3",        title: "attr3" },
+            { data: "attr4",        title: "attr4" },
+            { data: "attr5",        title: "attr5" },
             { data: "importStatus", title: "Import Status", defaultContent:""}
         ]};
 

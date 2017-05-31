@@ -8,6 +8,11 @@ class Race {
     BigDecimal distance
     BigDecimal cost
     Integer maxRunners = 100_000
+    String attr1
+    String attr2
+    String attr3
+    String attr4
+    String attr5
 
     static constraints = {
         name(blank: false, maxSize: 50, unique: ['startDate', 'city'])
@@ -17,6 +22,11 @@ class Race {
         distance(min: 0.0)
         cost(min: 0.0, max: 100.0)
         maxRunners(min: 0, max: 100_000)
+        attr1[:]
+        attr2[:]
+        attr3[:]
+        attr4[:]
+        attr5[:]
     }
 	
 	static hasMany = [registrations:Registration]

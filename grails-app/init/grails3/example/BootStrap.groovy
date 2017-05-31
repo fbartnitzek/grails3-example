@@ -54,7 +54,16 @@ class BootStrap {
 
         // data
         def jane = new Runner(firstName: "Jane", lastName: "Doe", gender: 'F', address: "SomeWay 1", city: "SomeTown",
-                state: "SomeState", zipCode: "123", email: "jane.doe@some.com").save(flush: true, failOnError: true)
+                state: "SomeState", zipCode: "123", email: "jane.doe@some.com",
+                attr1: "attr1", attr2: "attr2", attr3: "attr3", attr4: "attr4", attr5: "attr5")
+                .save(flush: true, failOnError: true)
+
+        for (int i = 0; i < 20; ++i) {
+            new Runner(firstName: "Jane" + i, lastName: "Doe" + i, gender: 'F', address: "SomeWay " + i, city: "SomeTown" + i,
+                    state: "SomeState" + i, zipCode: "123" + i, email: "jane" + i + ".doe@some.com",
+                    attr1: "attr1" +i, attr2: "attr2" +i, attr3: "attr3" +i, attr4: "attr4" + i, attr5: "attr5" + i)
+                    .save(flush: true, failOnError: true)
+        }
 
         grailsApplication.parentContext.getResource("classpath:Race.csv").inputStream
                 .toCsvReader(['charset': 'UTF-8', 'separatorChar': ';', 'skipLines': 1]).eachLine { tokens ->
@@ -64,7 +73,8 @@ class BootStrap {
                     state: tokens[2].trim(),
                     distance: tokens[3].trim(),
                     cost: tokens[4].trim(),
-                    maxRunners: tokens[5].trim()).save(flush: true, failOnError: true)
+                    maxRunners: tokens[5].trim(),
+                    attr1: "attr1", attr2: "attr2", attr3: "attr3", attr4: "attr4", attr5: "attr5").save(flush: true, failOnError: true)
         }
 
         new Registration(paid: true,

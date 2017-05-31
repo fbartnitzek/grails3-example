@@ -9,6 +9,7 @@
     </tr>
     </thead>
     <tbody>
+    %{-- no real each - already reduced --}%
     <g:each in="${collection}" var="bean" status="i">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
             <g:each in="${domainProperties}" var="p" status="j">
@@ -22,7 +23,4 @@
         </tr>
     </g:each>
     </tbody>
-    <tfoot>
-        <tr> based on dynamic scaffolding via fields.table </tr>
-    </tfoot>
 </table>
