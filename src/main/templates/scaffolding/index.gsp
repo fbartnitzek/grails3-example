@@ -19,7 +19,17 @@
             <g:if test="\${flash.message}">
                 <div class="message" role="status">\${flash.message}</div>
             </g:if>
-            <f:table collection="\${${propertyName}List}" />
+
+            <%  //http://techqa.info/programming/question/36156550/grails-scaffolding-templates---get-properties-from-domain-class
+            def grailsApplication = grails.util.Holders.grailsApplication
+            domainObject = grailsApplication.domainClasses.find {it.clazz.simpleName.toLowerCase() == propertyName}.clazz.newInstance()
+            domainClass = grailsApplication.getDomainClass(domainObject.class.name)
+            props = domainClass.persistentProperties*.name
+            System.out.println("Dyn Props: " + props)
+            %>
+
+            <f:table collection="\${${propertyName}List}"   properties="${props}"/>
+            %{--<f:table collection="\${${propertyName}List}" />--}%
 
             <div class="pagination">
                 <g:paginate total="\${${propertyName}Count ?: 0}" />

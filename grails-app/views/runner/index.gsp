@@ -18,7 +18,15 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${runnerList}" />
+
+            <%  //http://techqa.info/programming/question/36156550/grails-scaffolding-templates---get-properties-from-domain-class
+                domainObject = grailsApplication.domainClasses.find {it.clazz.simpleName == "Runner"}.clazz.newInstance()
+                domainClass = grailsApplication.getDomainClass(domainObject.class.name)
+                %>
+            <f:table collection="${runnerList}" properties="${domainClass.persistentProperties*.name}"/>
+            %{--<f:table collection="${runnerList}" properties="${domainClass.persistentProperties*.name}"/>--}%
+            %{--<f:table collection="${runnerList}" />--}%
+
 
             <div class="pagination">
                 <g:paginate total="${runnerCount ?: 0}" />
