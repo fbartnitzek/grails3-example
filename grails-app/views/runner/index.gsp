@@ -19,14 +19,14 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
 
-            <%  //http://techqa.info/programming/question/36156550/grails-scaffolding-templates---get-properties-from-domain-class
-                domainObject = grailsApplication.domainClasses.find {it.clazz.simpleName == "Runner"}.clazz.newInstance()
-                domainClass = grailsApplication.getDomainClass(domainObject.class.name)
-                %>
-            <f:table collection="${runnerList}" properties="${domainClass.persistentProperties*.name}"/>
+            %{--<%  //http://techqa.info/programming/question/36156550/grails-scaffolding-templates---get-properties-from-domain-class--}%
+                %{--domainObject = grailsApplication.domainClasses.find {it.clazz.simpleName == "Runner"}.clazz.newInstance()--}%
+                %{--domainClass = grailsApplication.getDomainClass(domainObject.class.name)--}%
+                %{--%>--}%
+            %{--<f:table collection="${runnerList}" properties="${domainClass.persistentProperties*.name}"/>--}%
             %{--<f:table collection="${runnerList}" properties="${domainClass.persistentProperties*.name}"/>--}%
             %{--<f:table collection="${runnerList}" />--}%
-
+            <f2:table collection="${runnerList}" maxProperties='20' />
 
             <div class="pagination">
                 <g:paginate total="${runnerCount ?: 0}" />
