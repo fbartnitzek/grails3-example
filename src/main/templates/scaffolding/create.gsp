@@ -4,6 +4,8 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="\${message(code: '${propertyName}.label', default: '${className}')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <asset:javascript src="prettySelect.js"/>
+        <asset:stylesheet src="prettySelect.css"/>
     </head>
     <body>
         <a href="#create-${propertyName}" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>

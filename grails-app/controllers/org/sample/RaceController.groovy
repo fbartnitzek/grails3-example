@@ -1,10 +1,30 @@
 package org.sample
 
+import grails.converters.JSON
+
 class RaceController {
 
     static scaffold = Race
 
     def csv() {}
+
+    def showj(Race race) {
+        render race as JSON
+    }
+
+    def listj(Integer max, String q) {
+        params.max = Math.min(max ?: 10, 100)
+        def myLike = q==null ? "%" : "%" + q + "%"
+        def c = Race.createCriteria()
+        def lst = c.list(params) {
+            ilike("name",myLike)
+            order("name")
+        }
+
+        Map map = [:]
+        map.put("resultList", lst.collect{[id: it.id, text: it.name]})
+        render map as JSON
+    }
 
     def savej() {
         Race race = new Race()
