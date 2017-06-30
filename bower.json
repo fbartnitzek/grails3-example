@@ -20,6 +20,8 @@
     "bootstrap": "~3.3.7",
     "papaparse": "3.1.4",
     "underscore": "~1.8.3",
-    "datatables": "1.10.12"
+    "datatables": "1.10.12",
+    "select2": "3.5.3",
+    "select2-bootstrap-css":"1.4.6"
   }
 }
