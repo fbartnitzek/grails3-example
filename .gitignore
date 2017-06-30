@@ -10,5 +10,7 @@ build/
 .settings
 .classpath
 classes/
+grails-app/assets/bower_components/
+.asscache
 
 
